@@ -84,7 +84,6 @@
   ###########################################################
   ##############################################################
   ##################################################################
-  if(method=="AIC"){
   # 多因素Cox回归，使用逐步法选择变量
   full_model_formula <- as.formula(paste('Surv(', time_col, ',', status_col, ') ~ ', paste(covariates, collapse = "+")))
   full_model <- coxph(full_model_formula, data = data)
