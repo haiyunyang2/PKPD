@@ -1,0 +1,7 @@
+#构建示例数据
+df <- data.frame(
+  value1 = c(5, 12, 8, 15, 7),
+  value2 = c(18, 22, 25, 10, 30)
+)
+#对指定列进行四分位数转换
+df <- convert_Multiple_Columns_To_Quartiles_value(df, column_names=c("value1", "value2"),label_format = "numeric")
