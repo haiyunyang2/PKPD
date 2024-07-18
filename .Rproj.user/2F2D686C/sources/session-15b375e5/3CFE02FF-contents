@@ -1,0 +1,85 @@
+
+
+
+
+#' NAC_
+#'
+#' 函数作用：此函数快捷计算AUC、Cmax、Cmin、CLast
+#' @param data 原始数据
+#' @param id_col 个体编号列
+#' @param time_col  时间列
+#' @param conc_col 血药浓度列
+#' @param format 结果为宽型数据还是长型数据(long)，默认为宽型数据(wider)
+#' @return df data.frame
+#' @export
+#'
+#' @import data.table
+#' @import ggplot2
+#' @import dplyr
+#' @import tidyr
+#' @import openxlsx
+#' @import readxl
+#' @import table1
+#' @importncappc
+#' @examples
+#' #构建示例数据
+#' data <- data.frame(
+#' ID=1,
+#' TIME = c(0,0.25,0.5,1,1.5,2,3,4,6,8,12,16,24),
+#' DOSE=100,
+#' DV=c(0, 0.07, 0.14, 0.21, 0.24, 0.27, 0.26, 0.25, 0.22, 0.19, 0.13, 0.081, 0.033)
+#' )
+#' #示例代码
+#' NAC <- NCA(data=data,TIME = "TIME",ID = "ID",DV="DV")
+# 定义函数
+NCA <- function(data,ID,TIME,DV,DOSE,adminType="extravascular"){
+  data1 <- data %>%
+    dplyr::rename(
+      ID = !!sym(ID),
+      TIME = !!sym(TIME),
+      DV = !!sym(DV),
+      )
+ if(adminType=="extravascular"){
+   out <- ncappc(obsFile=data1,
+                 onlyNCA = T,
+                 extrapolate = T,
+                 printOut = F,
+                 evid = FALSE,
+                 noPlot = T,
+                 idNmObs = "ID",
+                 timeNmObs = "TIME",
+                 adminType ="extravascular",
+                 method = "linearup-logdown",
+                 concNmObs ="DV",
+                 doseAmtNm = "DOSE")}
+  if(adminType=="iv-infusion"){
+    out <- ncappc(obsFile=data1,
+                  onlyNCA = T,
+                  extrapolate = T,
+                  printOut = F,
+                  evid = FALSE,
+                  noPlot = T,
+                  idNmObs = "ID",
+                  timeNmObs = "TIME",
+                  adminType ="iv-infusion",
+                  method = "linearup-logdown",
+                  concNmObs ="DV",
+                  doseAmtNm = "DOSE")}
+  if(adminType=="iv-bolus"){
+    out <- ncappc(obsFile=data1,
+                  onlyNCA = T,
+                  extrapolate = T,
+                  printOut = F,
+                  evid = FALSE,
+                  noPlot = T,
+                  idNmObs = "ID",
+                  timeNmObs = "TIME",
+                  adminType ="iv-bolus",
+                  method = "linearup-logdown",
+                  concNmObs ="DV",
+                  doseAmtNm = "DOSE")}
+
+  out <- data.frame(out$ncaOutput)
+  return(NCA=out)
+}
+

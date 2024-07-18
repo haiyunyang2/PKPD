@@ -1,0 +1,3 @@
+devtools::install_github("haiyunyang2/easyPharmacokinetic")
+library(easyPharmacokinetic)
+??easyPharmacokinetic::convert_Multiple_Columns_To_Quartiles_value
