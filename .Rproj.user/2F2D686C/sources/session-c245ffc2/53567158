@@ -3,7 +3,7 @@
     "path": "D:/新建文件夹 (2)/easyPharmacokinetic/easyPharmacokinetic/R/20.NCA.R",
     "project_path": "R/20.NCA.R",
     "type": "r_source",
-    "hash": "4024577111",
+    "hash": "579752073",
     "contents": "",
     "dirty": false,
     "created": 1721309492962.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "17,12",
+        "cursorPosition": "16,17",
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1721309498,
+    "lastKnownWriteTime": 1721309515,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1721309498979,
+    "last_content_update": 1721309516002,
     "read_only": false,
     "read_only_alternatives": []
 }

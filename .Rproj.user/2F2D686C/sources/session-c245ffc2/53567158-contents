@@ -15,7 +15,7 @@
 #' @import openxlsx
 #' @import readxl
 #' @import table1
-#' @importn cappc
+#' @import ncappc
 #' @examples
 #' #构建示例数据
 #' data <- data.frame(
